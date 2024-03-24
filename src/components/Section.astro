@@ -1,0 +1,28 @@
+---
+const { color, bodyTitle, bodyPrice, bodySubtitle, bodyBodySmallText } = Astro.props
+const textColor = `text-${color}`
+---
+<section class="landing-section" data-header-color="black">
+    <div class="relative  mx-auto">
+
+        <slot name="bodyBackground"></slot>
+        
+        <div class="absolute inset-0 text-center justify-center z-30 h-full flex flex-col">
+            <div class={`mt-24  items-start  ${textColor}`}>
+                <h1 class="text-5xl font-">{bodyTitle}</h1>
+                <p>
+                    <strong class="text-2xl font-medium">{bodyPrice}</strong>
+                    <br>
+                    <sub class="text-sm">{bodySubtitle}</sub>
+                </p>
+            </div>
+            <footer class="flex flex-col flex-grow justify-end pb-20 md:flex-grow md:flex-col">
+                <slot name="bodyButtons"></slot>
+                <div>
+                    <p class="mt-5 text-sm text-stone-700 ">{bodyBodySmallText}</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+    
+</section>
